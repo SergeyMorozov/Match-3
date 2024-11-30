@@ -1,7 +1,4 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -9,8 +6,9 @@ namespace  GAME
 {
     public class UILogic : MonoBehaviour
     {
-        public static bool IsOverUI => _isOverUI();
-        private static bool _isOverUI()
+        public static bool IsOverUI => OverUI();
+        
+        private static bool OverUI()
         {
             PointerEventData pointerData = new PointerEventData(EventSystem.current);
 
@@ -52,10 +50,6 @@ namespace  GAME
             return false;
         }
 
-        private void Awake()
-        {
-            UISystem.Data.CameraUI.gameObject.SetActive(false);
-        }
     }
 }
 

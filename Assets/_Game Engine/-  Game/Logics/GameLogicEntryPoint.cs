@@ -16,11 +16,9 @@ namespace  GAME
             GameSystem.Events.GameStart += GameStart;
         }
 
-        
-
         private void Start()
         {
-            // AppLoadingSystem.Events.AppLoad?.Invoke();
+            GameSystem.Events.GameMainMenuShow?.Invoke();
         }
 
         private void GameStart()
