@@ -6,10 +6,6 @@ namespace GAME
     [Serializable]
     public class GameSystemData
     {
-        public bool FadeShow;
-        public float FadeValue;
-        
-        [Space]
         public bool GamePause;
         public bool GamePlaying;
         public float TimeGamePlay;

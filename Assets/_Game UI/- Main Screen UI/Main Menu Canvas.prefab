@@ -329,10 +329,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f60ff684de4ba7488e4fcc93d661e07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ButtonNames:
-  - "\u041D\u043E\u0432\u0430\u044F \u0438\u0433\u0440\u0430"
-  - "\u0420\u0435\u043A\u043E\u0440\u0434\u044B"
-  - "\u0412\u044B\u0445\u043E\u0434"
+  Buttons:
+  - {fileID: 11400000, guid: b12bf0e8123ce0948abbb6d8ce22ff0b, type: 2}
+  - {fileID: 11400000, guid: f34abd75e3f046646b232bd4033a33c7, type: 2}
+  - {fileID: 11400000, guid: b641157c23e8def4bb9f30faebf391af, type: 2}
   Content: {fileID: 5835228205390889984}
   ButtonView: {fileID: 2630709979708788210}
 --- !u!1001 &3249380431083356789

@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -11,7 +10,7 @@ namespace GAME
         public TextMeshProUGUI Label;
         
         [Header("Data")]
-        public int Index;
+        public ButtonPreset ButtonPreset;
     }
 }
 

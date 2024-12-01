@@ -13,5 +13,15 @@ namespace GAME
         public Action GameInit;
         public Action GameStart;
         public Action GameReady;
+
+        public Action<ExtEvent> ExtEvent;
+    }
+    
+    public enum ExtEvent
+    {
+        None = 0,
+        NewGame = 1,
+        LeaderboardShow = 2,
+        QuitGame = 3
     }
 }
