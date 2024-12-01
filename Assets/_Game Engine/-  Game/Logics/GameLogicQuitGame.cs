@@ -12,8 +12,8 @@ namespace  GAME
         private void ExtEvent(ExtEvent extEvent)
         {
             if(extEvent != GAME.ExtEvent.QuitGame) return;
-            
-            
+                        
+            Application.Quit();
         }
     }
 }
