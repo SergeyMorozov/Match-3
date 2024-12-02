@@ -13,6 +13,7 @@ namespace GAME
         public Action GameInit;
         public Action GameStart;
         public Action GameReady;
+        public Action GameOver;
 
         public Action<ExtEvent> ExtEvent;
     }

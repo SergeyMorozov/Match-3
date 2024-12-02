@@ -18,6 +18,7 @@ namespace  GAME
 
         private void Start()
         {
+            GameSystem.Events.GameInit?.Invoke();
             GameSystem.Events.GameMainMenuShow?.Invoke();
         }
 

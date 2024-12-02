@@ -41,6 +41,12 @@ namespace  GAME
             _board.Cost = CalcCostMove();
             
             BoardSystem.Events.ScoreChanged?.Invoke(_board);
+
+            if (_board.Money <= 0)
+            {
+                GameSystem.Data.GamePause = true;
+                GameSystem.Events.GameOver?.Invoke();
+            }
         }
 
         private int CalcCostMove()
