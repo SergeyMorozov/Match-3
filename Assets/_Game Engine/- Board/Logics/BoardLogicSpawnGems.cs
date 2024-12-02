@@ -11,7 +11,7 @@ namespace  GAME
         private void Awake()
         {
             GameSystem.Events.GameStart += GameStart;
-            BoardSystem.Events.MatchCellsComplete += StartMoveGems;
+            BoardSystem.Events.MatchCellsComplete += MatchCellsComplete;
         }
 
         private void GameStart()
@@ -20,6 +20,12 @@ namespace  GAME
             _grid = _board.Grid;
         }
 
+        private void MatchCellsComplete()
+        {
+            StartMoveGems();
+            SetGemsInFreeCells();
+        }
+        
         private void StartMoveGems()
         {
             for (int x = 0; x < _grid.Size.x; x++)
@@ -33,6 +39,8 @@ namespace  GAME
                     if (cell.Gem.IsMatch)
                     {
                         counter++;
+                        CreateSpawnGems(cell);
+                        cell.Gem = null;
                     }
                     else
                     {
@@ -41,37 +49,46 @@ namespace  GAME
                             GridCell cellTarget = _grid.Cells[new Vector2Int(x, y + counter)];
                             cellTarget.Gem = cell.Gem;
                             cellTarget.Gem.TargetPoint = cellTarget.Position;
+                            cellTarget.Gem.SpeedMove = 0;
+                            cellTarget.Gem.IsReady = false;
                             cell.Gem = null;
                         }
                     }
                 }
             }
-            
-            
-            /*foreach (GridCell cell in _grid.ListCells)
-            {
-                if (cell.Gem == null || !cell.Gem.IsMatch) continue;
-            
-                _emptyCells = 0;
-                SetNewTargetForGems(cell);
-                
-                GridSpawnPoint spawnPoint = _grid.SpawnPoints.Find(sp => sp.Index == cell.PosInt.x);
-                spawnPoint.TargetCells.Add(cell);
-            
-                GemPreset gemPreset = Tools.GetRandomObject(_board.Preset.Gems);
-                GemObject gem = GemSystem.Events.GemCreate?.Invoke(gemPreset, _board.Ref.Gems);
-                gem.transform.localPosition = spawnPoint.Position;
-                // gem.Ref.SpriteRenderer.transform.localScale = Vector3.zero;
-                gem.IsSpawn = true;
-            
-                cell.Gem = gem;
-            }*/
         }
 
-        private void SetNewTargetForGems(GridCell cell)
+        private void CreateSpawnGems(GridCell cell)
         {
-            if (cell.Gem.IsMatch) _emptyCells++;
-            int posY = cell.PosInt.y - 1; 
+            GridSpawnPoint spawnPoint = _grid.SpawnPoints.Find(sp => sp.Index == cell.PosInt.x);
+            GemPreset gemPreset = Tools.GetRandomObject(_board.Preset.Gems);
+            GemObject gem = GemSystem.Events.GemCreate?.Invoke(gemPreset, _board.Ref.Gems);
+            gem.transform.localPosition = spawnPoint.Position;
+            gem.Ref.SpriteRenderer.transform.localScale *= _board.Preset.SizeCell;
+            gem.Ref.transform.localScale = Vector3.zero;
+            gem.IsSpawn = true;
+            gem.Timer = spawnPoint.Gems.Count + 1;
+            spawnPoint.Gems.Insert(0, gem);
+        }
+
+        private void SetGemsInFreeCells()
+        {
+            for (int x = 0; x < _grid.Size.x; x++)
+            {
+                GridSpawnPoint spawnPoint = _grid.SpawnPoints.Find(sp => sp.Index == x);
+                if(spawnPoint.Gems.Count == 0) continue;
+
+                for (int y = 0; y < _grid.Size.y; y++)
+                {
+                    GridCell cell = _grid.Cells[new Vector2Int(x, y)];
+                    if(cell.Gem != null) break;
+                    
+                    cell.Gem = spawnPoint.Gems[y];
+                    cell.Gem.TargetPoint = cell.Position;
+                }
+                
+                spawnPoint.Gems.Clear();
+            }
         }
     }
 }

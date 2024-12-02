@@ -67,7 +67,7 @@ namespace  GAME
             for (int x = 0; x < sizeGrid.x; x++)
             {
                 GridSpawnPoint spawnPoint = new GridSpawnPoint();
-                spawnPoint.TargetCells = new List<GridCell>();
+                spawnPoint.Gems = new List<GemObject>();
                 spawnPoint.Index = x;
                 spawnPoint.Position = new Vector3(_offsetX + x * sizeCell, _offsetY + sizeCell, 0);
                 grid.SpawnPoints.Add(spawnPoint);

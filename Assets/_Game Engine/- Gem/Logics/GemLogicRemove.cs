@@ -22,6 +22,7 @@ namespace  GAME
             if(_listRemove.Contains(gem)) return;
             
             gem.Timer = 1;
+            gem.IsReady = false;
             _listRemove.Add(gem);
         }
 

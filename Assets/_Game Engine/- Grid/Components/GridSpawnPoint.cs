@@ -9,7 +9,7 @@ namespace GAME
     {
         public int Index;
         public Vector3 Position;
-        public List<GridCell> TargetCells;
+        public List<GemObject> Gems;
     }
 }
 

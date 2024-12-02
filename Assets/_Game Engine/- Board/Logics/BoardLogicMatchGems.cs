@@ -26,11 +26,11 @@ namespace  GAME
             if(!_grid.Cells.ContainsKey(v)) return;
 
             GemObject gem = _grid.Cells[v].Gem;
-            if(gem == null) return;
+            if(gem == null || !gem.IsReady) return;
             
-            Debug.Log("Select Gem " + gem.Preset.Name);
+            // Debug.Log("Select Gem " + gem.Preset.Name);
 
-            MarkerDestroy(_grid.Cells[v]);
+            MarkerMatch(_grid.Cells[v]);
             CheckMatch(_grid.Cells[v], new Vector2Int(1, 0));
             CheckMatch(_grid.Cells[v], new Vector2Int(-1, 0));
             CheckMatch(_grid.Cells[v], new Vector2Int(0, 1));
@@ -46,14 +46,14 @@ namespace  GAME
             GridCell cellMatch = _grid.Cells[cell.PosInt + offset];
             if(cellMatch.Gem == null || cellMatch.Gem.Preset != cell.Gem.Preset) return;
 
-            MarkerDestroy(cellMatch);
+            MarkerMatch(cellMatch);
             CheckMatch(cellMatch, offset);
         }
 
-        private void MarkerDestroy(GridCell cell)
+        private void MarkerMatch(GridCell cell)
         {
+            cell.Gem.IsReady = false;
             cell.Gem.IsMatch = true;
-            // cell.Gem.Ref.SpriteRenderer.transform.localScale = Vector3.one * 0.1f;
         }
 
     }

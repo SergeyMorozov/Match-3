@@ -12,16 +12,12 @@ namespace  GAME
         private float _offsetX;
         private float _offsetY;
 
-        private bool _readySelect;
-        
         private void Awake()
         {
             _camera = Camera.main;
             _plane = new Plane(Vector3.back, Vector3.zero);
             
             BoardSystem.Events.BoardCreate += BoardCreate;
-            GameSystem.Events.GameStart += GameStart;
-            GemSystem.Events.RemoveComplete += RemoveComplete;
         }
 
         private void BoardCreate(BoardPreset boardPreset)
@@ -31,19 +27,9 @@ namespace  GAME
             _offsetY = boardPreset.SizeBoard.y / 2f;
         }
 
-        private void GameStart()
-        {
-            _readySelect = true;
-        }
-
-        private void RemoveComplete()
-        {
-            _readySelect = true;
-        }
-
         private void Update()
         {
-            if(GameSystem.Data.GamePause) return;
+            if(GameSystem.Data.GamePause || GemSystem.Data.IsBuzyGems) return;
 
             if (Input.GetMouseButtonDown(0))
             {
@@ -56,10 +42,8 @@ namespace  GAME
                     int x = (int)(hitPoint.x / _cellSize - _offsetX);
                     int y = -(int)(hitPoint.y / _cellSize - _offsetY);
                     
-                    Debug.Log("SelectCell " + x + "," + y);
+                    // Debug.Log("SelectCell " + x + "," + y);
                     BoardSystem.Events.SelectCell?.Invoke(new Vector2Int(x, y));
-
-                    _readySelect = false;
                 }
             }
         }
