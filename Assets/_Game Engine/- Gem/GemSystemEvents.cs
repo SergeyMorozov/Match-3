@@ -8,5 +8,6 @@ namespace GAME
     public class GemSystemEvents
     {
         public Action<List<GridCell>, List<GemPreset>, float, Transform> SetGems;
+        public Action RemoveComplete;
     }
 }

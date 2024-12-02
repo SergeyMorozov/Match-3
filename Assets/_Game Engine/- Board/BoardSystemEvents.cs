@@ -8,5 +8,6 @@ namespace GAME
     {
         public Action<BoardPreset> BoardCreate;
         public Action<Vector2Int> SelectCell;
+        public Action MatchCellsComplete;
     }
 }

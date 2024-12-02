@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 348b6ce10f845fd469ceb90c1ca0f43d, type: 3}
   m_Name: Gem Settings
   m_EditorClassIdentifier: 
+  RemoveDuration: 0.2

@@ -6,6 +6,8 @@ namespace GAME
     {
         public GemPreset Preset;
         public GemRef Ref;
+
+        public bool MatchMarker;
     }
 }
 
