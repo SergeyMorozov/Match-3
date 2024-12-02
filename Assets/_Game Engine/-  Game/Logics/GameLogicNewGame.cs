@@ -17,6 +17,8 @@ namespace  GAME
 
             BoardPreset boardPreset = Tools.GetRandomObject(BoardSystem.Settings.Boards);
             BoardSystem.Events.BoardCreate?.Invoke(boardPreset);
+            
+            GameSystem.Events.GameStart?.Invoke();
         }
     }
 }

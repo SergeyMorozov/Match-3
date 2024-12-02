@@ -13,6 +13,8 @@ namespace  GAME
         private GridObject GridCreate(GridPreset gridPreset, Transform parent, Vector2Int sizeGrid, float sizeCell)
         {
             GridObject grid = Tools.AddObject<GridObject>(gridPreset.Prefab, parent);
+            GridSystem.Data.CurrentGrid = grid;
+
             grid.ListCells = new List<GridCell>();
             grid.Cells = new Dictionary<Vector2Int, GridCell>();
             float w = sizeGrid.x * sizeCell + gridPreset.BorderWidth;
@@ -44,8 +46,6 @@ namespace  GAME
             grid.Ref.Cell1.gameObject.SetActive(false);
             grid.Ref.Cell2.gameObject.SetActive(false);
 
-            GridSystem.Data.CurrentGrid = grid;
-            
             return grid;
         }
     }

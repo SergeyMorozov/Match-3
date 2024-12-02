@@ -18,6 +18,7 @@ namespace  GAME
             {
                 GemPreset gemPreset = Tools.GetRandomObject(listGems);
                 GemObject gem = Tools.AddObject<GemObject>(gemPreset.Prefab, parent);
+                cell.Gem = gem;
                 gem.transform.localPosition = cell.Position;
                 gem.Ref.SpriteRenderer.transform.localScale *= size;
                 GemSystem.Data.Gems.Add(gem);

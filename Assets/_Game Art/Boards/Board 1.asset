@@ -19,10 +19,8 @@ MonoBehaviour:
   SizeBoard: {x: 12, y: 12}
   SizeCell: 1
   Gems:
-  - {fileID: 11400000, guid: e78042d7afc2ccc43b6d1734c335541b, type: 2}
   - {fileID: 11400000, guid: 1f4471f3ede725c499a7be03d55df8e4, type: 2}
   - {fileID: 11400000, guid: bd3c625642829bf4a8875c22e194755b, type: 2}
-  - {fileID: 11400000, guid: 86b182097b479144b9bf2488280ad718, type: 2}
   - {fileID: 11400000, guid: 96ac62caa2d1f4d4a8523df37cc66c23, type: 2}
   - {fileID: 11400000, guid: 6b48f64273eea3d4eae3ccf6be624a09, type: 2}
   - {fileID: 11400000, guid: b90adf5e987effc4db7e6dcf85fc20e9, type: 2}

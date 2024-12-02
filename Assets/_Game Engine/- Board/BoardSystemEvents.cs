@@ -1,4 +1,5 @@
 using System;
+using UnityEngine;
 
 namespace GAME
 {
@@ -6,5 +7,6 @@ namespace GAME
     public class BoardSystemEvents
     {
         public Action<BoardPreset> BoardCreate;
+        public Action<Vector2Int> SelectCell;
     }
 }
