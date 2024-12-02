@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace GAME
@@ -6,7 +7,15 @@ namespace GAME
     {
         public string Name;
         public Sprite Icon;
-        public BoardRef Prefab;
+        public BoardObject Prefab;
+
+        [Space]
+        public GridPreset GridPreset;
+        public Vector2Int SizeBoard;
+        public float SizeCell;
+
+        [Space]
+        public List<GemPreset> Gems;
     }
 }
 

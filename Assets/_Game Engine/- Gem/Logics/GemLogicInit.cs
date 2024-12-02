@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace  GAME
 {
-    public class GridLogic : MonoBehaviour
+    public class GemLogicInit : MonoBehaviour
     {
         private void Awake()
         {

@@ -20,7 +20,8 @@ namespace  GAME
             MainMenuCanvas.Instance.Show += Show;
             MainMenuCanvas.Instance.Hide += Hide;
             
-            GameSystem.Events.GameMainMenuShow += GameMainMenuShow;
+            GameSystem.Events.GameMainMenuShow += Show;
+            GameSystem.Events.GameMainMenuHide += Hide;
         }
 
         private void Init()
@@ -35,11 +36,6 @@ namespace  GAME
             }
         }
         
-        private void GameMainMenuShow()
-        {
-            Show();
-        }
-
         private void Show()
         {
             if(_show) return;
@@ -47,17 +43,17 @@ namespace  GAME
             _view.gameObject.SetActive(true);
         }
 
-        private void SelectMenu(ExtEvent extEvent)
-        {
-            Debug.Log("EventExt " + extEvent);
-            GameSystem.Events.ExtEvent?.Invoke(extEvent);
-        }
-
         private void Hide()
         {
             if(!_show) return;
             _show = false;
             _view.gameObject.SetActive(false);
+        }
+
+        private void SelectMenu(ExtEvent extEvent)
+        {
+            Debug.Log("EventExt " + extEvent);
+            GameSystem.Events.ExtEvent?.Invoke(extEvent);
         }
 
 

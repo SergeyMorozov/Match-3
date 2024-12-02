@@ -64,6 +64,11 @@ namespace GAME
 			return JsonUtility.ToJson(data);
 		}
 
+		public static T AddObject<T>(object obj) where T : Component
+		{
+			return AddObject<T>(obj, null, false);
+		}
+		
 		public static T AddObject<T>(Transform parent) where T : Component
 		{
 			return AddObject<T>(null, parent, false);

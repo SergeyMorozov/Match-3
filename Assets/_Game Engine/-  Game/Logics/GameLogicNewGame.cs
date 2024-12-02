@@ -12,6 +12,11 @@ namespace  GAME
         private void ExtEvent(ExtEvent extEvent)
         {
             if(extEvent != GAME.ExtEvent.NewGame) return;
+            
+            GameSystem.Events.GameMainMenuHide?.Invoke();
+
+            BoardPreset boardPreset = Tools.GetRandomObject(BoardSystem.Settings.Boards);
+            BoardSystem.Events.BoardCreate?.Invoke(boardPreset);
         }
     }
 }
