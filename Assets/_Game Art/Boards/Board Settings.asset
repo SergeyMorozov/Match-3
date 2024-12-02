@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Board Settings
   m_EditorClassIdentifier: 
   Boards:
-  - {fileID: 11400000, guid: ac702f2eac828b5419fcb94647b6f352, type: 2}
   - {fileID: 11400000, guid: 98a059746a15dff43be2cae08f175457, type: 2}
+  - {fileID: 11400000, guid: ac702f2eac828b5419fcb94647b6f352, type: 2}

@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Strawberry
   Icon: {fileID: 21300000, guid: 140169fe467b8b649aa2541e0c8d6c09, type: 3}
-  Prefab: {fileID: 7800997558928358866, guid: 1c5d242a5db141d4ea21c5140502dc69, type: 3}
+  Prefab: {fileID: 558180171658992006, guid: 1c5d242a5db141d4ea21c5140502dc69, type: 3}

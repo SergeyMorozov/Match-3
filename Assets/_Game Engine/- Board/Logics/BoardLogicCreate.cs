@@ -14,6 +14,8 @@ namespace  GAME
             BoardObject boardObject = Tools.AddObject<BoardObject>(boardPreset.Prefab);
             boardObject.Grid = GridSystem.Events.GridCreate?.Invoke(boardPreset.GridPreset, boardObject.transform,
                 boardPreset.SizeBoard, boardPreset.SizeCell);
+            GemSystem.Events.SetGems?.Invoke(boardObject.Grid.ListCells, boardObject.Preset.Gems, boardPreset.SizeCell,
+                boardObject.Ref.Gems);
         }
     }
 }

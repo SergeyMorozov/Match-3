@@ -16,8 +16,8 @@ MonoBehaviour:
   Icon: {fileID: 0}
   Prefab: {fileID: 8872297226436518396, guid: f9dcf128c9d95424cae2a6f55059ee0b, type: 3}
   GridPreset: {fileID: 11400000, guid: 0b50203e60c1cf34584632b15abeb7d9, type: 2}
-  SizeBoard: {x: 10, y: 10}
-  SizeCell: 1.2
+  SizeBoard: {x: 12, y: 12}
+  SizeCell: 1
   Gems:
   - {fileID: 11400000, guid: e78042d7afc2ccc43b6d1734c335541b, type: 2}
   - {fileID: 11400000, guid: 1f4471f3ede725c499a7be03d55df8e4, type: 2}

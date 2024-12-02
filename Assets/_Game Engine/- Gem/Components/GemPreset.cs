@@ -6,7 +6,7 @@ namespace GAME
     {
         public string Name;
         public Sprite Icon;
-        public GemRef Prefab;
+        public GemObject Prefab;
     }
 }
 
