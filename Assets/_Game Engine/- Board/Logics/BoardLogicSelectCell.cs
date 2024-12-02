@@ -43,7 +43,7 @@ namespace  GAME
 
         private void Update()
         {
-            if(GameSystem.Data.GamePause || !_readySelect) return;
+            if(GameSystem.Data.GamePause) return;
 
             if (Input.GetMouseButtonDown(0))
             {

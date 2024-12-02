@@ -10,8 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 7185485459996806647}
   - component: {fileID: 5584319607688263328}
-  - component: {fileID: 2963631042625992894}
+  - component: {fileID: 848647949568547305}
   - component: {fileID: -8038120448938805640}
+  - component: {fileID: -673676592841766870}
   m_Layer: 0
   m_Name: Gem System
   m_TagString: Untagged
@@ -49,7 +50,7 @@ MonoBehaviour:
   settings: {fileID: 11400000, guid: f76a6dd9982f1624f88588f4dc5c8897, type: 2}
   data:
     Gems: []
---- !u!114 &2963631042625992894
+--- !u!114 &848647949568547305
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -58,7 +59,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6652261679912169750}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ecb6c0fb6e9e1045a0ca3777d037bcf, type: 3}
+  m_Script: {fileID: 11500000, guid: 852d68435a3194d408a01dd67ddba1a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &-8038120448938805640
@@ -71,5 +72,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bc13cd775fc09fe4a95eb9fa4e352dfc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-673676592841766870
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6652261679912169750}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75066f6f5e3135140a1cf03db73d4da2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

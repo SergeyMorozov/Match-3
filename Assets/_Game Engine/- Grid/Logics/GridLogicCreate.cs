@@ -5,6 +5,9 @@ namespace  GAME
 {
     public class GridLogicCreate : MonoBehaviour
     {
+        private float _offsetX;
+        private float _offsetY;
+        
         private void Awake()
         {
             GridSystem.Events.GridCreate += GridCreate;
@@ -15,14 +18,24 @@ namespace  GAME
             GridObject grid = Tools.AddObject<GridObject>(gridPreset.Prefab, parent);
             GridSystem.Data.CurrentGrid = grid;
 
-            grid.ListCells = new List<GridCell>();
-            grid.Cells = new Dictionary<Vector2Int, GridCell>();
-            float w = sizeGrid.x * sizeCell + gridPreset.BorderWidth;
-            float h = sizeGrid.y * sizeCell + gridPreset.BorderWidth;
+            grid.Size = sizeGrid;
+            float w = sizeGrid.x * sizeCell + grid.Preset.BorderWidth;
+            float h = sizeGrid.y * sizeCell + grid.Preset.BorderWidth;
             grid.Ref.Border.size = new Vector2(w, h);
 
-            float offsetX = (-sizeGrid.x / 2f + 0.5f) * sizeCell;
-            float offsetY = (sizeGrid.y / 2f - 0.5f) * sizeCell;
+            _offsetX = (-sizeGrid.x / 2f + 0.5f) * sizeCell;
+            _offsetY = (sizeGrid.y / 2f - 0.5f) * sizeCell;
+            
+            CreateCells(grid, sizeGrid, sizeCell);
+            CreateSpawnPoints(grid, sizeGrid, sizeCell);
+            
+            return grid;
+        }
+
+        private void CreateCells(GridObject grid, Vector2Int sizeGrid, float sizeCell)
+        {
+            grid.ListCells = new List<GridCell>();
+            grid.Cells = new Dictionary<Vector2Int, GridCell>();
             
             for (int y = 0; y < sizeGrid.y; y++)
             {
@@ -32,21 +45,33 @@ namespace  GAME
                     SpriteRenderer cellPrefab = index == 0 ? grid.Ref.Cell1 : grid.Ref.Cell2;
                     SpriteRenderer cell = Tools.AddObject<SpriteRenderer>(cellPrefab, grid.transform);
                     cell.size = new Vector2(sizeCell, sizeCell);
-                    Vector3 position = new Vector3(offsetX + x * sizeCell, offsetY - y * sizeCell, 0);
+                    Vector3 position = new Vector3(_offsetX + x * sizeCell, _offsetY - y * sizeCell, 0);
                     cell.transform.localPosition = position;
 
                     GridCell gridCell = new GridCell();
-                    gridCell.Index = new Vector2Int(x, y);
+                    gridCell.PosInt = new Vector2Int(x, y);
                     gridCell.Position = position;
                     grid.ListCells.Add(gridCell);
-                    grid.Cells.Add(gridCell.Index, gridCell);
+                    grid.Cells.Add(gridCell.PosInt, gridCell);
                 }
             }
             
             grid.Ref.Cell1.gameObject.SetActive(false);
             grid.Ref.Cell2.gameObject.SetActive(false);
+        }
 
-            return grid;
+        private void CreateSpawnPoints(GridObject grid, Vector2Int sizeGrid, float sizeCell)
+        {
+            grid.SpawnPoints = new List<GridSpawnPoint>();
+
+            for (int x = 0; x < sizeGrid.x; x++)
+            {
+                GridSpawnPoint spawnPoint = new GridSpawnPoint();
+                spawnPoint.TargetCells = new List<GridCell>();
+                spawnPoint.Index = x;
+                spawnPoint.Position = new Vector3(_offsetX + x * sizeCell, _offsetY + sizeCell, 0);
+                grid.SpawnPoints.Add(spawnPoint);
+            }
         }
     }
 }

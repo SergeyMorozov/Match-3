@@ -7,7 +7,8 @@ namespace GAME
     [Serializable]
     public class GemSystemEvents
     {
-        public Action<List<GridCell>, List<GemPreset>, float, Transform> SetGems;
+        public Func<GemPreset, Transform, GemObject> GemCreate;
+        public Action<GemObject> GemRemove;
         public Action RemoveComplete;
     }
 }

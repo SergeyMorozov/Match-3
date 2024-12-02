@@ -5,11 +5,11 @@ using UnityEngine;
 namespace GAME
 {
     [Serializable]
-    public class GridCell
+    public class GridSpawnPoint
     {
-        public Vector2Int PosInt;
+        public int Index;
         public Vector3 Position;
-        public GemObject Gem;
+        public List<GridCell> TargetCells;
     }
 }
 

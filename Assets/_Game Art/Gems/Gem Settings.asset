@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: Gem Settings
   m_EditorClassIdentifier: 
   RemoveDuration: 0.2
+  SpeedMove: 50

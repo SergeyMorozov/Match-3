@@ -14,42 +14,43 @@ namespace  GAME
             _listRemove = new List<GemObject>();
             
             BoardSystem.Events.MatchCellsComplete += MatchCellsComplete;
+            GemSystem.Events.GemRemove += GemRemove;
+        }
+
+        private void GemRemove(GemObject gem)
+        {
+            if(_listRemove.Contains(gem)) return;
+            
+            gem.Timer = 1;
+            _listRemove.Add(gem);
         }
 
         private void MatchCellsComplete()
         {
-            _listRemove.Clear();
-            
             foreach (GemObject gem in GemSystem.Data.Gems)
             {
-                if(!gem.MatchMarker) continue;
-                _listRemove.Add(gem);
+                if(!gem.IsMatch) continue;
+                GemRemove(gem);
             }
-
-            StartCoroutine(RemoveGems());
         }
 
-        IEnumerator RemoveGems()
+        private void Update()
         {
-            float timer = 1;
-            while (timer > 0)
+            for (var i = 0; i < _listRemove.Count; i++)
             {
-                timer -= Time.deltaTime / GemSystem.Settings.RemoveDuration;
-                foreach (GemObject gem in _listRemove)
-                {
-                    gem.Ref.transform.localScale = Vector3.one * timer;
-                }
+                var gem = _listRemove[i];
+                gem.Timer -= Time.deltaTime / GemSystem.Settings.RemoveDuration;
+                gem.Ref.transform.localScale = Vector3.one * gem.Timer;
 
-                yield return null;
-            }
+                if (gem.Timer > 0) continue;
 
-            foreach (GemObject gem in _listRemove)
-            {
+                _listRemove.Remove(gem);
                 GemSystem.Data.Gems.Remove(gem);
                 Destroy(gem.gameObject);
+
+                if (_listRemove.Count == 0) GemSystem.Events.RemoveComplete?.Invoke();
+                i--;
             }
-            
-            GemSystem.Events.RemoveComplete?.Invoke();
         }
     }
 }

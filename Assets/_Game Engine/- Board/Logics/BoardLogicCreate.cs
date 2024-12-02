@@ -16,8 +16,16 @@ namespace  GAME
             
             boardObject.Grid = GridSystem.Events.GridCreate?.Invoke(boardPreset.GridPreset, boardObject.transform,
                 boardPreset.SizeBoard, boardPreset.SizeCell);
-            GemSystem.Events.SetGems?.Invoke(boardObject.Grid.ListCells, boardObject.Preset.Gems, boardPreset.SizeCell,
-                boardObject.Ref.Gems);
+            
+            foreach (GridCell cell in boardObject.Grid.ListCells)
+            {
+                GemPreset gemPreset = Tools.GetRandomObject(boardObject.Preset.Gems);
+                GemObject gem = GemSystem.Events.GemCreate?.Invoke(gemPreset, boardObject.Ref.Gems);
+                gem.TargetPoint = cell.Position;
+                gem.transform.localPosition = cell.Position;
+                gem.Ref.SpriteRenderer.transform.localScale *= boardPreset.SizeCell;
+                cell.Gem = gem;
+            }
         }
     }
 }

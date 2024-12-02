@@ -26,6 +26,8 @@ namespace  GAME
             if(!_grid.Cells.ContainsKey(v)) return;
 
             GemObject gem = _grid.Cells[v].Gem;
+            if(gem == null) return;
+            
             Debug.Log("Select Gem " + gem.Preset.Name);
 
             MarkerDestroy(_grid.Cells[v]);
@@ -39,10 +41,10 @@ namespace  GAME
 
         private void CheckMatch(GridCell cell, Vector2Int offset)
         {
-            if(!_grid.Cells.ContainsKey(cell.Index + offset)) return;
+            if(!_grid.Cells.ContainsKey(cell.PosInt + offset)) return;
             
-            GridCell cellMatch = _grid.Cells[cell.Index + offset];
-            if(cellMatch.Gem.Preset != cell.Gem.Preset) return;
+            GridCell cellMatch = _grid.Cells[cell.PosInt + offset];
+            if(cellMatch.Gem == null || cellMatch.Gem.Preset != cell.Gem.Preset) return;
 
             MarkerDestroy(cellMatch);
             CheckMatch(cellMatch, offset);
@@ -50,7 +52,7 @@ namespace  GAME
 
         private void MarkerDestroy(GridCell cell)
         {
-            cell.Gem.MatchMarker = true;
+            cell.Gem.IsMatch = true;
             // cell.Gem.Ref.SpriteRenderer.transform.localScale = Vector3.one * 0.1f;
         }
 
