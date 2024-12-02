@@ -36,6 +36,7 @@ namespace  GAME
             CheckMatch(_grid.Cells[v], new Vector2Int(0, 1));
             CheckMatch(_grid.Cells[v], new Vector2Int(0, -1));
             
+            BoardSystem.Events.ScoreCalculate?.Invoke();
             BoardSystem.Events.MatchCellsComplete?.Invoke();
         }
 

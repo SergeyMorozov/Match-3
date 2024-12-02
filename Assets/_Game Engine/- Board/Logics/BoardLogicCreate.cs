@@ -17,7 +17,7 @@ namespace  GAME
             boardObject.Grid = GridSystem.Events.GridCreate?.Invoke(boardPreset.GridPreset, boardObject.transform,
                 boardPreset.SizeBoard, boardPreset.SizeCell);
             
-            foreach (GridCell cell in boardObject.Grid.ListCells)
+            foreach (GridCell cell in boardObject.Grid.Cells.Values)
             {
                 GemPreset gemPreset = Tools.GetRandomObject(boardObject.Preset.Gems);
                 GemObject gem = GemSystem.Events.GemCreate?.Invoke(gemPreset, boardObject.Ref.Gems);
@@ -26,6 +26,8 @@ namespace  GAME
                 gem.Ref.SpriteRenderer.transform.localScale *= boardPreset.SizeCell;
                 cell.Gem = gem;
             }
+            
+            BoardSystem.Events.BoardCreateComplete?.Invoke(boardObject);
         }
     }
 }

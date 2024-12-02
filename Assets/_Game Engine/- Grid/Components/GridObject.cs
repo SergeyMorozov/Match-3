@@ -9,7 +9,6 @@ namespace GAME
         public GridRef Ref;
 
         public Vector2Int Size;
-        public List<GridCell> ListCells; 
         public Dictionary<Vector2Int, GridCell> Cells;
         public List<GridSpawnPoint> SpawnPoints;
     }

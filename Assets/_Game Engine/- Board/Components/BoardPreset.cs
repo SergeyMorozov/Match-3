@@ -15,6 +15,12 @@ namespace GAME
         public float SizeCell;
 
         [Space]
+        public int StartMoney = 10;
+        public int CostTap = 3;
+        public int CostMove = 1;
+        public int IncomGem = 1;
+
+        [Space]
         public List<GemPreset> Gems;
     }
 }

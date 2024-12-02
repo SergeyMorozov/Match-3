@@ -34,7 +34,6 @@ namespace  GAME
 
         private void CreateCells(GridObject grid, Vector2Int sizeGrid, float sizeCell)
         {
-            grid.ListCells = new List<GridCell>();
             grid.Cells = new Dictionary<Vector2Int, GridCell>();
             
             for (int y = 0; y < sizeGrid.y; y++)
@@ -51,7 +50,6 @@ namespace  GAME
                     GridCell gridCell = new GridCell();
                     gridCell.PosInt = new Vector2Int(x, y);
                     gridCell.Position = position;
-                    grid.ListCells.Add(gridCell);
                     grid.Cells.Add(gridCell.PosInt, gridCell);
                 }
             }

@@ -10,6 +10,12 @@ namespace GAME
         
         [Header("Data")]
         public GridObject Grid;
+        public int Move;
+        public int Money;
+        public int MoneyChange;
+        public int Cost;
+        public int Score;
+        public int ScoreChange;
     }
 }
 
