@@ -67,8 +67,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: NEXT
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 81407cc3922e00648a66027093d5fa84, type: 2}
-  m_sharedMaterial: {fileID: -3144007293399647314, guid: 81407cc3922e00648a66027093d5fa84, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ea4785465a53e0e44973f00f20fda106, type: 2}
+  m_sharedMaterial: {fileID: -3939822559259112149, guid: ea4785465a53e0e44973f00f20fda106, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -245,7 +245,7 @@ MonoBehaviour:
     m_HighlightedSprite: {fileID: 0}
     m_PressedSprite: {fileID: 21300000, guid: ac6e93038c3e08c418a058994d1b2fd2, type: 3}
     m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 21300000, guid: 0caa5e0b8a33c2e42a2dc292f36fd02b, type: 3}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
     m_HighlightedTrigger: Highlighted

@@ -6,6 +6,6 @@ namespace GAME
     [Serializable]
     public class LeaderboardSystemData
     {
-        public List<LeaderboardData> ListPlayers;
+        public List<LeaderboardPlayer> ListPlayers;
     }
 }

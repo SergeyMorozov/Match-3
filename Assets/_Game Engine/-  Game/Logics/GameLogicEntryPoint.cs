@@ -11,21 +11,12 @@ namespace  GAME
             
             Application.targetFrameRate = 1000;
             GameSystem.Data.GamePause = true;
-            
-            
-            GameSystem.Events.GameStart += GameStart;
         }
 
         private void Start()
         {
             GameSystem.Events.GameInit?.Invoke();
             GameSystem.Events.GameMainMenuShow?.Invoke();
-        }
-
-        private void GameStart()
-        {
-            GameSystem.Data.GamePause = false;
-            GameSystem.Data.GamePlaying = true;
         }
 
         private void Update()

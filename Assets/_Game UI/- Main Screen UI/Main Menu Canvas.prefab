@@ -332,6 +332,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Buttons:
+  - {fileID: 11400000, guid: f1f3c6d8ad754c2498f43bdb09e71484, type: 2}
   - {fileID: 11400000, guid: b12bf0e8123ce0948abbb6d8ce22ff0b, type: 2}
   - {fileID: 11400000, guid: f34abd75e3f046646b232bd4033a33c7, type: 2}
   - {fileID: 11400000, guid: b641157c23e8def4bb9f30faebf391af, type: 2}

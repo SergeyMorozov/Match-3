@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace  GAME
@@ -6,6 +7,7 @@ namespace  GAME
     {
         private MainMenuView _view;
         private bool _show;
+        private List<ButtonView> _listButtons;
 
         private void Awake()
         {
@@ -27,12 +29,16 @@ namespace  GAME
         private void Init()
         {
             Tools.RemoveObjects(_view.Content);
-            foreach (ButtonPreset buttonPreset in _view.Buttons)
+
+            _listButtons = new List<ButtonView>();
+            foreach (var buttonPreset in _view.Buttons)
             {
                 ButtonView buttonView = Tools.AddUI<ButtonView>(_view.ButtonView, _view.Content);
                 buttonView.ButtonPreset = buttonPreset;
                 buttonView.Label.text = buttonPreset.Text;
-                buttonView.Button.onClick.AddListener(delegate { SelectMenu(buttonPreset.extEvent); });
+                var preset = buttonPreset;
+                buttonView.Button.onClick.AddListener(delegate { SelectMenu(preset.extEvent); });
+                _listButtons.Add(buttonView);
             }
         }
         
@@ -41,6 +47,8 @@ namespace  GAME
             if(_show) return;
             _show = true;
             _view.gameObject.SetActive(true);
+            
+            _listButtons[0].SetActive(GameSystem.Data.GamePlaying);
         }
 
         private void Hide()

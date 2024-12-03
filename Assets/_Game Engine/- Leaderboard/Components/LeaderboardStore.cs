@@ -7,7 +7,7 @@ namespace GAME
     [Serializable]
     public class LeaderboardStore
     {
-        public List<LeaderboardData> ListPlayers;
+        public List<LeaderboardPlayer> ListPlayers;
     }
 }
 

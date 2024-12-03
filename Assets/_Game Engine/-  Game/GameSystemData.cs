@@ -9,6 +9,8 @@ namespace GAME
         public bool GamePause;
         public bool GamePlaying;
         public float TimeGamePlay;
+
+        public string PlayerName;
     }
 
 }

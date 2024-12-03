@@ -1,60 +1,46 @@
-using System.Collections.Generic;
+﻿using System.Linq;
 using UnityEngine;
 
 namespace  GAME
 {
     public class LeaderboardLogic : MonoBehaviour
     {
-        private List<LeaderboardData> _listData;
-
         private void Awake()
         {
-            GameSystem.Events.GameInit += GameInit;
+            LeaderboardSystem.Events.CheckNewRecord += CheckNewRecord;
+            LeaderboardSystem.Events.SetNewRecord += SetNewRecord;
         }
 
-        private void GameInit()
+        private bool CheckNewRecord(int score)
         {
-            LoadLeaderboard();
+            int minScore = LeaderboardSystem.Data.ListPlayers.Last().Score;
+            return score > minScore;
         }
 
-        private void LoadLeaderboard()
+        private void SetNewRecord(string playerName, int score)
         {
-            PlayerPrefs.SetString("leaderboard", "");
+            LeaderboardPlayer player =
+                LeaderboardSystem.Data.ListPlayers.Find(p => p.PlayerName == playerName);
+
+            if (player == null)
+            {
+                player = new LeaderboardPlayer { PlayerName = playerName };
+                LeaderboardSystem.Data.ListPlayers.Add(player);
+            }
+
+            player.Score = score;
             
-            string json = PlayerPrefs.GetString("leaderboard", "");
-
-            if (json == "")
-            {
-                CreateDefaultList();
-                SaveLeaderboard();
-            }
-            else
-            {
-                LeaderboardSystem.Data.ListPlayers = JsonUtility.FromJson<LeaderboardStore>(json).ListPlayers;
-            }
+            LeaderboardSystem.Data.ListPlayers.Sort(SortList);
+            LeaderboardCanvas.Instance.Show?.Invoke();
         }
 
-        private void SaveLeaderboard()
+        private int SortList(LeaderboardPlayer player1, LeaderboardPlayer player2)
         {
-            LeaderboardStore store = new LeaderboardStore { ListPlayers = LeaderboardSystem.Data.ListPlayers };
-            string json = JsonUtility.ToJson(store);
-            PlayerPrefs.SetString("leaderboard", json);
+            if (player1.Score < player2.Score) return 1;
+            if (player1.Score > player2.Score) return -1;
+            return 0;
         }
 
-        private void CreateDefaultList()
-        {
-            LeaderboardSystem.Data.ListPlayers = new List<LeaderboardData>();
-            foreach (LeaderboardData playerData in LeaderboardSystem.Settings.DefaultListPlayers)
-            {
-                LeaderboardData leaderboardData = new LeaderboardData
-                {
-                    PlayerName = playerData.PlayerName,
-                    Score = playerData.Score
-                };
-                    
-                LeaderboardSystem.Data.ListPlayers.Add(leaderboardData);
-            }
-        }
     }
 }
 

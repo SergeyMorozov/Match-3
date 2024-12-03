@@ -5,6 +5,6 @@ namespace GAME
 {
     public class LeaderboardSystemSettings : ScriptableObject
     {
-        public List<LeaderboardData> DefaultListPlayers;
+        public List<LeaderboardPlayer> DefaultListPlayers;
     }
 }

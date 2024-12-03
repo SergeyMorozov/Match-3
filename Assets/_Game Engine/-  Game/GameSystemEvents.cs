@@ -14,6 +14,7 @@ namespace GAME
         public Action GameStart;
         public Action GameReady;
         public Action GameOver;
+        public Action<string> PlayerNameChange;
 
         public Action<ExtEvent> ExtEvent;
     }
@@ -23,6 +24,8 @@ namespace GAME
         None = 0,
         NewGame = 1,
         LeaderboardShow = 2,
-        QuitGame = 3
+        QuitGame = 3,
+        Continue = 4
+        
     }
 }

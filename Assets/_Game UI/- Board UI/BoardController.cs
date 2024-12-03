@@ -13,9 +13,15 @@ namespace  GAME
         {
             _view = BoardCanvas.Instance.View;
             _view.gameObject.SetActive(false);
+            _view.ButtonHome.onClick.AddListener(GoMainMenu);
 
             GameSystem.Events.GameStart += Show;
             BoardSystem.Events.ScoreChanged += ScoreChanged;
+        }
+
+        private void GoMainMenu()
+        {
+            GameSystem.Events.GameMainMenuShow?.Invoke();
         }
 
         private void ScoreChanged(BoardObject board)
