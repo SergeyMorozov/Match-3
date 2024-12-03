@@ -25,7 +25,7 @@ namespace  GAME
 
         private void LoadLeaderboard()
         {
-            string json = PlayerPrefs.GetString("leaderboard", "");
+            string json = LoadDataFromFile();
 
             if (json == "")
             {
@@ -42,7 +42,7 @@ namespace  GAME
         {
             LeaderboardStore store = new LeaderboardStore { ListPlayers = LeaderboardSystem.Data.ListPlayers };
             string json = JsonUtility.ToJson(store);
-            PlayerPrefs.SetString("leaderboard", json);
+            SaveDataToFile(json);
         }
 
         private void CreateDefaultList()
@@ -59,6 +59,18 @@ namespace  GAME
                 LeaderboardSystem.Data.ListPlayers.Add(leaderboardPlayer);
             }
         }
+
+        private string LoadDataFromFile()
+        {
+            return StoreSystem.Events.Load?.Invoke(LeaderboardSystem.Settings.SaveFileName);
+        }
+        
+        private void SaveDataToFile(string json)
+        {
+            StoreSystem.Events.Save?.Invoke(LeaderboardSystem.Settings.SaveFileName, json);
+        }
+
+        
     }
 }
 

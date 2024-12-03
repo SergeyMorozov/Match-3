@@ -5,6 +5,7 @@ namespace GAME
 {
     public class LeaderboardSystemSettings : ScriptableObject
     {
+        public string SaveFileName = "Leaderboard";
         public List<LeaderboardPlayer> DefaultListPlayers;
     }
 }
