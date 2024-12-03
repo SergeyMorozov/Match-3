@@ -8,7 +8,8 @@ namespace  GAME
         private void Awake()
         {
             LeaderboardSystem.Events.CheckNewRecord += CheckNewRecord;
-            LeaderboardSystem.Events.SetNewRecord += SetNewRecord;
+            LeaderboardSystem.Events.SetRecord += SetRecord;
+            LeaderboardSystem.Events.GetScoreByPlayerName += GetScoreByPlayerName;
         }
 
         private bool CheckNewRecord(int score)
@@ -17,7 +18,7 @@ namespace  GAME
             return score > minScore;
         }
 
-        private void SetNewRecord(string playerName, int score)
+        private void SetRecord(string playerName, int score)
         {
             LeaderboardPlayer player =
                 LeaderboardSystem.Data.ListPlayers.Find(p => p.PlayerName == playerName);
@@ -28,10 +29,12 @@ namespace  GAME
                 LeaderboardSystem.Data.ListPlayers.Add(player);
             }
 
+            if(score < player.Score) return;
+            
             player.Score = score;
             
             LeaderboardSystem.Data.ListPlayers.Sort(SortList);
-            LeaderboardCanvas.Instance.Show?.Invoke();
+            LeaderboardSystem.Events.ListPlayersChanged?.Invoke();
         }
 
         private int SortList(LeaderboardPlayer player1, LeaderboardPlayer player2)
@@ -39,6 +42,12 @@ namespace  GAME
             if (player1.Score < player2.Score) return 1;
             if (player1.Score > player2.Score) return -1;
             return 0;
+        }
+
+        private int GetScoreByPlayerName(string playerName)
+        {
+            LeaderboardPlayer player = LeaderboardSystem.Data.ListPlayers.Find(p => p.PlayerName == playerName);
+            return player?.Score ?? 0;
         }
 
     }

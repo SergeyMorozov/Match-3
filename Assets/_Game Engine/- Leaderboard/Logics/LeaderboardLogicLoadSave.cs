@@ -10,6 +10,7 @@ namespace  GAME
         private void Awake()
         {
             GameSystem.Events.GameInit += GameInit;
+            LeaderboardSystem.Events.ListPlayersChanged += ListPlayersChanged;
         }
 
         private void GameInit()
@@ -17,10 +18,13 @@ namespace  GAME
             LoadLeaderboard();
         }
 
+        private void ListPlayersChanged()
+        {
+            SaveLeaderboard();
+        }
+
         private void LoadLeaderboard()
         {
-            PlayerPrefs.SetString("leaderboard", "");
-            
             string json = PlayerPrefs.GetString("leaderboard", "");
 
             if (json == "")

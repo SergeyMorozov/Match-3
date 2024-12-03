@@ -6,6 +6,8 @@ namespace GAME
     public class LeaderboardSystemEvents
     {
         public Func<int, bool> CheckNewRecord;
-        public Action<string, int> SetNewRecord;
+        public Action<string, int> SetRecord;
+        public Action ListPlayersChanged;
+        public Func<string, int> GetScoreByPlayerName;
     }
 }

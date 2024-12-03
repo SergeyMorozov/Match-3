@@ -4,6 +4,8 @@ namespace  GAME
 {
     public class GameLogicNewGame : MonoBehaviour
     {
+        private int _indexBoards;
+        
         private void Awake()
         {
             GameSystem.Events.ExtEvent += ExtEvent;
@@ -15,9 +17,11 @@ namespace  GAME
             {
                 GameSystem.Events.GameMainMenuHide?.Invoke();
 
-                BoardPreset boardPreset = Tools.GetRandomObject(BoardSystem.Settings.Boards);
+                if (_indexBoards >= BoardSystem.Settings.Boards.Count) _indexBoards = 0;
+                BoardPreset boardPreset = BoardSystem.Settings.Boards[_indexBoards];
+                _indexBoards++;
+                
                 BoardSystem.Events.BoardCreate?.Invoke(boardPreset);
-
                 GameSystem.Events.GameStart?.Invoke();
             }
             

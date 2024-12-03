@@ -22,21 +22,35 @@ namespace  GAME
         private void GameOverHide()
         {
             int score = BoardSystem.Data.CurrentBoard.Score;
+            string playerName = GameSystem.Data.PlayerName;
+
+            if ((int)LeaderboardSystem.Events.GetScoreByPlayerName?.Invoke(playerName) > 0)
+            {
+                // Игрок есть в списке
+                LeaderboardSystem.Events.SetRecord?.Invoke(GameSystem.Data.PlayerName, score);
+                GameSystem.Events.GameMainMenuShow?.Invoke();
+                return;
+            }
+            
             bool newRecord = (bool)LeaderboardSystem.Events.CheckNewRecord?.Invoke(score);
             
             if (!newRecord)
             {
+                // Недостаточно очков, для записи в таблицу рекордов
                 GameSystem.Events.GameMainMenuShow?.Invoke();
             }
             else
             {
+                // Запись в таблицу
                 if (GameSystem.Data.PlayerName == "")
                 {
+                    // Пустое имя. Ввод имени
                     PlayerNameCanvas.Instance.Show?.Invoke();
                 }
                 else
                 {
-                    LeaderboardSystem.Events.SetNewRecord?.Invoke(GameSystem.Data.PlayerName, score);
+                    // Добавить новую запись
+                    LeaderboardSystem.Events.SetRecord?.Invoke(GameSystem.Data.PlayerName, score);
                 }
             }
         }
@@ -44,7 +58,7 @@ namespace  GAME
         private void PlayerNameChange(string playerName)
         {
             GameSystem.Data.PlayerName = playerName;
-            LeaderboardSystem.Events.SetNewRecord?.Invoke(playerName, BoardSystem.Data.CurrentBoard.Score);
+            LeaderboardSystem.Events.SetRecord?.Invoke(playerName, BoardSystem.Data.CurrentBoard.Score);
         }
 
         /*

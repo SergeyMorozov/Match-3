@@ -27,6 +27,7 @@ namespace  GAME
             _show = true;
             _view.gameObject.SetActive(true);
 
+            _view.LabelScore.text = BoardSystem.Data.CurrentBoard.Score.ToString();
         }
 
         private void Hide()

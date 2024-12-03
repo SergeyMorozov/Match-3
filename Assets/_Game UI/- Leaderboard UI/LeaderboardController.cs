@@ -19,7 +19,7 @@ namespace  GAME
 
             LeaderboardCanvas.Instance.Show += Show;
             LeaderboardCanvas.Instance.Hide += Hide;
-            
+            LeaderboardSystem.Events.ListPlayersChanged += Show;
         }
 
         private void Show()

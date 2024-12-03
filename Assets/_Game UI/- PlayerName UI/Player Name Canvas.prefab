@@ -1450,6 +1450,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61641acdb98359340ae524367d771428, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MinNumberChar: 3
+  LabelScore: {fileID: 1031004559225159089}
   InputField: {fileID: 1609296879099501868}
   Button: {fileID: 2426083747326418467}
 --- !u!1001 &514953593163572182
