@@ -51,6 +51,7 @@ namespace  GAME
         private void ButtonClose()
         {
             LeaderboardCanvas.Instance.Hide?.Invoke();
+            GameSystem.Events.GameMainMenuShow?.Invoke();
         }
 
     }

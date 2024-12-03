@@ -8,9 +8,10 @@ namespace  GAME
         private void Awake()
         {
             Random.InitState(0);
-            
             Application.targetFrameRate = 1000;
+            
             GameSystem.Data.GamePause = true;
+            GameSystem.Data.GamePlaying = false;
         }
 
         private void Start()

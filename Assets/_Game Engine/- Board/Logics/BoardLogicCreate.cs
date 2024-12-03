@@ -11,6 +11,11 @@ namespace  GAME
 
         private void BoardCreate(BoardPreset boardPreset)
         {
+            if (BoardSystem.Data.CurrentBoard != null)
+            {
+                Destroy(BoardSystem.Data.CurrentBoard.gameObject);
+            }
+            
             BoardObject boardObject = Tools.AddObject<BoardObject>(boardPreset.Prefab);
             BoardSystem.Data.CurrentBoard = boardObject;
             

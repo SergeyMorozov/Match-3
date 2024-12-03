@@ -44,7 +44,6 @@ namespace  GAME
 
             if (_board.Money <= 0)
             {
-                GameSystem.Data.GamePause = true;
                 GameSystem.Events.GameOver?.Invoke();
             }
         }

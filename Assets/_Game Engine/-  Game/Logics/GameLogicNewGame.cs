@@ -7,8 +7,6 @@ namespace  GAME
         private void Awake()
         {
             GameSystem.Events.ExtEvent += ExtEvent;
-            GameSystem.Events.GameMainMenuShow += GameMainMenuShow;
-            GameSystem.Events.GameMainMenuHide += GameMainMenuHide;
         }
 
         private void ExtEvent(ExtEvent extEvent)
@@ -29,19 +27,6 @@ namespace  GAME
             }
         }
         
-        private void GameMainMenuShow()
-        {
-            GameSystem.Data.GamePause = true;
-            GameSystem.Data.GamePlaying = false;
-        }
-
-        private void GameMainMenuHide()
-        {
-            GameSystem.Data.GamePause = false;
-            GameSystem.Data.GamePlaying = true;
-        }
-
-
     }
 }
 
