@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using ToolBox.Pools;
 using UnityEngine;
 
 namespace  GAME
@@ -47,7 +48,7 @@ namespace  GAME
 
                 _listRemove.Remove(gem);
                 GemSystem.Data.Gems.Remove(gem);
-                Destroy(gem.gameObject);
+                gem.gameObject.Release();
 
                 if (_listRemove.Count == 0) GemSystem.Events.RemoveComplete?.Invoke();
                 i--;

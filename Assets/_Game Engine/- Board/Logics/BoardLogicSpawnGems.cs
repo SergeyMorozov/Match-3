@@ -64,7 +64,7 @@ namespace  GAME
             GemPreset gemPreset = Tools.GetRandomObject(_board.Preset.Gems);
             GemObject gem = GemSystem.Events.GemCreate?.Invoke(gemPreset, _board.Ref.Gems);
             gem.transform.localPosition = spawnPoint.Position;
-            gem.Ref.SpriteRenderer.transform.localScale *= _board.Preset.SizeCell;
+            gem.Ref.Mesh.localScale = Vector3.one * _board.Preset.SizeCell;
             gem.Ref.transform.localScale = Vector3.zero;
             gem.IsSpawn = true;
             gem.Timer = spawnPoint.Gems.Count + 1;

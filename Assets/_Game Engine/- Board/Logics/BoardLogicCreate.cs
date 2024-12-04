@@ -28,7 +28,7 @@ namespace  GAME
                 GemObject gem = GemSystem.Events.GemCreate?.Invoke(gemPreset, boardObject.Ref.Gems);
                 gem.TargetPoint = cell.Position;
                 gem.transform.localPosition = cell.Position;
-                gem.Ref.SpriteRenderer.transform.localScale *= boardPreset.SizeCell;
+                gem.Ref.Mesh.localScale = Vector3.one * boardPreset.SizeCell;
                 cell.Gem = gem;
             }
             
