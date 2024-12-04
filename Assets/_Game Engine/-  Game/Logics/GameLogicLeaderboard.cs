@@ -16,14 +16,17 @@ namespace  GAME
         {
             if(extEvent != GAME.ExtEvent.LeaderboardShow) return;
             
+            // Показываем UI списка рекордов
             LeaderboardCanvas.Instance.Show?.Invoke();
         }
         
         private void GameOverHide()
         {
+            // Закрыли окно конца игры. Проверяем количество очков.
             int score = BoardSystem.Data.CurrentBoard.Score;
             string playerName = GameSystem.Data.PlayerName;
 
+            // Есть ли игрок в списке
             if ((int)LeaderboardSystem.Events.GetScoreByPlayerName?.Invoke(playerName) > 0)
             {
                 // Игрок есть в списке
@@ -32,6 +35,7 @@ namespace  GAME
                 return;
             }
             
+            // Игрока ещё нет в списке. Есть ли рекорд?
             bool newRecord = (bool)LeaderboardSystem.Events.CheckNewRecord?.Invoke(score);
             
             if (!newRecord)
@@ -60,24 +64,6 @@ namespace  GAME
             GameSystem.Data.PlayerName = playerName;
             LeaderboardSystem.Events.SetRecord?.Invoke(playerName, BoardSystem.Data.CurrentBoard.Score);
         }
-
-        /*
-        private void SetNewRecord()
-        {
-            LeaderboardPlayer player =
-                LeaderboardSystem.Data.ListPlayers.Find(p => p.PlayerName == GameSystem.Data.PlayerName);
-
-            if (player == null)
-            {
-                player = new LeaderboardPlayer { PlayerName = GameSystem.Data.PlayerName };
-                LeaderboardSystem.Data.ListPlayers.Add(player);
-            }
-
-            player.Score = BoardSystem.Data.CurrentBoard.Score;
-
-            LeaderboardCanvas.Instance.Show?.Invoke();
-        }
-        */
 
     }
 }

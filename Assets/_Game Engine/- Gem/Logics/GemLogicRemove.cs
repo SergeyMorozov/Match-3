@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using ToolBox.Pools;
 using UnityEngine;
@@ -49,9 +47,9 @@ namespace  GAME
                 _listRemove.Remove(gem);
                 GemSystem.Data.Gems.Remove(gem);
                 gem.gameObject.Release();
+                i--;
 
                 if (_listRemove.Count == 0) GemSystem.Events.RemoveComplete?.Invoke();
-                i--;
             }
         }
     }

@@ -16,12 +16,15 @@ namespace  GAME
                 Destroy(BoardSystem.Data.CurrentBoard.gameObject);
             }
             
+            // Создаём доску
             BoardObject boardObject = Tools.AddObject<BoardObject>(boardPreset.Prefab);
             BoardSystem.Data.CurrentBoard = boardObject;
             
+            // Создаём сетку на основе пресета сетки
             boardObject.Grid = GridSystem.Events.GridCreate?.Invoke(boardPreset.GridPreset, boardObject.transform,
                 boardPreset.SizeBoard, boardPreset.SizeCell);
             
+            // Расстановка камней на доске
             foreach (GridCell cell in boardObject.Grid.Cells.Values)
             {
                 GemPreset gemPreset = Tools.GetRandomObject(boardObject.Preset.Gems);

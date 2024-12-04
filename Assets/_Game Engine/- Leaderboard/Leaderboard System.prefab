@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4102572261091170980}
   - component: {fileID: 4772848086392957784}
-  - component: {fileID: -2432399658332103260}
   - component: {fileID: -3018006569510958165}
+  - component: {fileID: -2432399658332103260}
   m_Layer: 0
   m_Name: Leaderboard System
   m_TagString: Untagged
@@ -49,18 +49,6 @@ MonoBehaviour:
   settings: {fileID: 11400000, guid: c1e8615ddd693bb438fbca8f8cfe15f9, type: 2}
   data:
     ListPlayers: []
---- !u!114 &-2432399658332103260
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3889707056461665088}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2b3f1e23a4b2b8498c59f5f1026d2c6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &-3018006569510958165
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -71,5 +59,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7ad194e25091b6d48beac2f95d6dfde5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-2432399658332103260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3889707056461665088}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2b3f1e23a4b2b8498c59f5f1026d2c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

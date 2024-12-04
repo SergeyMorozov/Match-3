@@ -23,6 +23,7 @@ namespace  GAME
 
         private void SelectCell(Vector2Int v)
         {
+            // Выбрана клетка с координатами "v"
             if(!_grid.Cells.ContainsKey(v)) return;
 
             GemObject gem = _grid.Cells[v].Gem;
@@ -30,6 +31,7 @@ namespace  GAME
             
             // Debug.Log("Select Gem " + gem.Preset.Name);
 
+            // Находим и помечаем камни для удаления
             MarkerMatch(_grid.Cells[v]);
             CheckMatch(_grid.Cells[v], new Vector2Int(1, 0));
             CheckMatch(_grid.Cells[v], new Vector2Int(-1, 0));

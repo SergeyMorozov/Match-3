@@ -17,10 +17,12 @@ namespace  GAME
             {
                 GameSystem.Events.GameMainMenuHide?.Invoke();
 
+                // Находим пресет доски, на которой будем играть
                 if (_indexBoards >= BoardSystem.Settings.Boards.Count) _indexBoards = 0;
                 BoardPreset boardPreset = BoardSystem.Settings.Boards[_indexBoards];
                 _indexBoards++;
                 
+                // Создаём доску на основе пресета
                 BoardSystem.Events.BoardCreate?.Invoke(boardPreset);
                 GameSystem.Events.GameStart?.Invoke();
             }

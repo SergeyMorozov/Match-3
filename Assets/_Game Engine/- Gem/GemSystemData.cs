@@ -6,7 +6,7 @@ namespace GAME
     [Serializable]
     public class GemSystemData
     {
-        public bool IsBuzyGems;
+        public bool IsBuzyGems;         // Камни находятся в процессе перемещения
         public List<GemObject> Gems;
     }
 }

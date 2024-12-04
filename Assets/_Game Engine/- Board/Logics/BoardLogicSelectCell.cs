@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 namespace  GAME
@@ -22,6 +21,7 @@ namespace  GAME
 
         private void BoardCreate(BoardPreset boardPreset)
         {
+            // Из пресета доски берём её размеры
             _cellSize = boardPreset.SizeCell;
             _offsetX = -boardPreset.SizeBoard.x / 2f;
             _offsetY = boardPreset.SizeBoard.y / 2f;

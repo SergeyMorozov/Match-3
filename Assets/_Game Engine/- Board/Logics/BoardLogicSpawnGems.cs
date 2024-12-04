@@ -22,11 +22,11 @@ namespace  GAME
 
         private void MatchCellsComplete()
         {
-            StartMoveGems();
-            SetGemsInFreeCells();
+            PrepareMoveGems();           // Подготовка оставшихся камней к перемещению на место удалённых
+            SetTargetForGemsOnSpawn();   // Распределение камней в спавн точках на пустые места
         }
         
-        private void StartMoveGems()
+        private void PrepareMoveGems()
         {
             for (int x = 0; x < _grid.Size.x; x++)
             {
@@ -38,14 +38,16 @@ namespace  GAME
                     
                     if (cell.Gem.IsMatch)
                     {
+                        // Камень помечен на удаление. Добавляем новый на спавн.
                         counter++;
-                        CreateSpawnGems(cell);
+                        CreateGemOnSpawnPoint(cell);
                         cell.Gem = null;
                     }
                     else
                     {
                         if (counter > 0)
                         {
+                            // Назначаем новую точку для перемещения камня
                             GridCell cellTarget = _grid.Cells[new Vector2Int(x, y + counter)];
                             cellTarget.Gem = cell.Gem;
                             cellTarget.Gem.TargetPoint = cellTarget.Position;
@@ -58,7 +60,7 @@ namespace  GAME
             }
         }
 
-        private void CreateSpawnGems(GridCell cell)
+        private void CreateGemOnSpawnPoint(GridCell cell)
         {
             GridSpawnPoint spawnPoint = _grid.SpawnPoints.Find(sp => sp.Index == cell.PosInt.x);
             GemPreset gemPreset = Tools.GetRandomObject(_board.Preset.Gems);
@@ -71,13 +73,14 @@ namespace  GAME
             spawnPoint.Gems.Insert(0, gem);
         }
 
-        private void SetGemsInFreeCells()
+        private void SetTargetForGemsOnSpawn()
         {
             for (int x = 0; x < _grid.Size.x; x++)
             {
                 GridSpawnPoint spawnPoint = _grid.SpawnPoints.Find(sp => sp.Index == x);
                 if(spawnPoint.Gems.Count == 0) continue;
 
+                // Заполняем пустые ячейки, до тех пор, пока не встретим ячейку с камнем
                 for (int y = 0; y < _grid.Size.y; y++)
                 {
                     GridCell cell = _grid.Cells[new Vector2Int(x, y)];

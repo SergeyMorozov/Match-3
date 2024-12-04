@@ -393,7 +393,7 @@ PrefabInstance:
     - target: {fileID: 3787151208064945730, guid: 9a064d36870f06849984bdea5633c30e, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 01a34d9e0dade794188a273832564fb0, type: 3}
+      objectReference: {fileID: 21300000, guid: 4d4e6a1fa6f67354e8ed929fb9d40ab3, type: 3}
     - target: {fileID: 3856405796423953437, guid: 9a064d36870f06849984bdea5633c30e, type: 3}
       propertyPath: m_fontColor.b
       value: 0
@@ -523,6 +523,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3787151208064945730, guid: 9a064d36870f06849984bdea5633c30e, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 61b7c1903c6a99a438546db2cb7db60a, type: 3}
     - target: {fileID: 4809808334065737919, guid: 9a064d36870f06849984bdea5633c30e, type: 3}
       propertyPath: m_Name
       value: Panel Info (2)
@@ -639,7 +643,7 @@ PrefabInstance:
     - target: {fileID: 3787151208064945730, guid: 9a064d36870f06849984bdea5633c30e, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 01a34d9e0dade794188a273832564fb0, type: 3}
+      objectReference: {fileID: 21300000, guid: 4d4e6a1fa6f67354e8ed929fb9d40ab3, type: 3}
     - target: {fileID: 3856405796423953437, guid: 9a064d36870f06849984bdea5633c30e, type: 3}
       propertyPath: m_text
       value: '-200

@@ -15,11 +15,13 @@ namespace  GAME
 
         private void GameInit()
         {
+            // При старте загружаем таблицу рекордов
             LoadLeaderboard();
         }
 
         private void ListPlayersChanged()
         {
+            // При изменении таблицы рекордов сохраняем результаты
             SaveLeaderboard();
         }
 
@@ -29,6 +31,7 @@ namespace  GAME
 
             if (json == "")
             {
+                // Если не получилось загрузить данные, создаём дефолтные
                 CreateDefaultList();
                 SaveLeaderboard();
             }
