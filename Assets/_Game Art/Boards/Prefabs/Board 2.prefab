@@ -26,8 +26,8 @@ Transform:
   m_GameObject: {fileID: 791935928751731453}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.5245, z: 0}
-  m_LocalScale: {x: 1, y: 1.1181, z: 1}
+  m_LocalPosition: {x: 0, y: -3.3, z: 0}
+  m_LocalScale: {x: 1, y: 1.4, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1264740712589383166}
@@ -171,6 +171,12 @@ MonoBehaviour:
   Preset: {fileID: 11400000, guid: 98a059746a15dff43be2cae08f175457, type: 2}
   Ref: {fileID: 8821210705301419739}
   Grid: {fileID: 0}
+  Move: 0
+  Money: 0
+  MoneyChange: 0
+  Cost: 0
+  Score: 0
+  ScoreChange: 0
 --- !u!114 &8821210705301419739
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -297,7 +303,7 @@ Transform:
   m_GameObject: {fileID: 5280685183915035199}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
