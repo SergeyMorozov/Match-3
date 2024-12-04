@@ -11,6 +11,7 @@ namespace  GAME
         {
             _view = GameOverCanvas.Instance.View;
             _view.gameObject.SetActive(false);
+            
             _view.ButtonClose.onClick.AddListener(ButtonClose);
 
             GameOverCanvas.Instance.Show += Show;

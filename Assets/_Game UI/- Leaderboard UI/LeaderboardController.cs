@@ -12,13 +12,14 @@ namespace  GAME
         {
             _view = LeaderboardCanvas.Instance.View;
             _view.gameObject.SetActive(false);
-            _view.ButtonClose.onClick.AddListener(ButtonClose);
             
+            _view.ButtonClose.onClick.AddListener(ButtonClose);
             _view.Prefab.transform.SetParent(_view.Content.parent);
             _view.Prefab.gameObject.SetActive(false);
 
             LeaderboardCanvas.Instance.Show += Show;
             LeaderboardCanvas.Instance.Hide += Hide;
+            
             LeaderboardSystem.Events.ListPlayersChanged += Show;
         }
 

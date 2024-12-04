@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace  GAME
@@ -12,6 +11,7 @@ namespace  GAME
         {
             _view = PlayerNameCanvas.Instance.View;
             _view.gameObject.SetActive(false);
+            
             _view.InputField.onValueChanged.AddListener(EnterNameChanged);
             _view.Button.onClick.AddListener(EnterName);
             
