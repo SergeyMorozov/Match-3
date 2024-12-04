@@ -13,25 +13,29 @@ namespace  GAME
 
         private string Load(string fileName)
         {
-            string pathFull = GetPath(StoreSystem.Settings.SaveDirectory, fileName);
+            string pathFull = GetPath(fileName);
             string json = File.ReadAllText(pathFull);
             return json;
         }
 
         private void Save(string fileName, string json)
         {
-            string pathFull = GetPath(StoreSystem.Settings.SaveDirectory, fileName);
+            string pathFull = GetPath(fileName);
             File.WriteAllText(pathFull, json);
         }
 
-        private string GetPath(string dirName, string fileName)
+        private string GetPath(string fileName)
         {
-            string pathDirectory = Application.persistentDataPath + "/" + dirName;
-            string pathFile = fileName + "." + StoreSystem.Settings.ExtFile;
-            string pathFull = pathDirectory + "/" + pathFile;
+            string pathDirectory = Path.Combine(Application.streamingAssetsPath, StoreSystem.Settings.SaveDirectory);
+            string pathFull = Path.Combine(pathDirectory, fileName + StoreSystem.Settings.ExtFile);
             
             if (!Directory.Exists(pathDirectory)) Directory.CreateDirectory(pathDirectory);
-            if (!File.Exists(pathFull)) File.Create(pathFull);
+            if (!File.Exists(pathFull))
+            {
+                var stream = File.Create(pathFull);
+                stream.Dispose();
+                stream.Close();
+            }
             
             return pathFull;
         }

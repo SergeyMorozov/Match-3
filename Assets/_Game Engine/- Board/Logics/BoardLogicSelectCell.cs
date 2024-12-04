@@ -29,7 +29,9 @@ namespace  GAME
 
         private void Update()
         {
-            if(GameSystem.Data.GamePause || GemSystem.Data.IsBuzyGems) return;
+            if(GameSystem.Data.GamePause ||
+               !GameSystem.Data.GamePlaying ||
+               GemSystem.Data.IsBuzyGems) return;
 
             if (Input.GetMouseButtonDown(0))
             {

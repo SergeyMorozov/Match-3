@@ -12,3 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 903e9743839fbc5449a273ae7f85a40d, type: 3}
   m_Name: Store Settings
   m_EditorClassIdentifier: 
+  SaveDirectory: Saves
+  ExtFile: .json
